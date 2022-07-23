@@ -5,6 +5,10 @@ app = Flask(__name__)
 
 random_number = random.randint(0, 9)
 
+IMG_CORRECT = 'https://media2.giphy.com/media/elsol3P5Jt2ASsxLva/giphy.gif'
+IMG_TOO_LOW = 'https://media4.giphy.com/media/j3FzUsajPDD3OJKJyb/giphy.gif'
+IMG_TOO_HIGH = 'https://media2.giphy.com/media/G2w61fwWbKtAKj3txt/giphy.gif'
+
 
 @app.route('/')
 def home():
@@ -16,13 +20,13 @@ def home():
 def guess_number(number):
     if number == random_number:
         return '<h1 style="color:green">You found me!</h1>' \
-               '<img src="https://media2.giphy.com/media/elsol3P5Jt2ASsxLva/giphy.gif" />'
+               f'<img src="{IMG_CORRECT}" />'
     elif number < random_number:
         return '<h1 style="color:red">Too low, try again!</h1>' \
-               '<img src="https://media4.giphy.com/media/j3FzUsajPDD3OJKJyb/giphy.gif" />'
+               f'<img src="{IMG_TOO_LOW}" />'
     else:
         return '<h1 style="color:purple">Too high, try again!</h1>' \
-               '<img src="https://media2.giphy.com/media/G2w61fwWbKtAKj3txt/giphy.gif" />'
+               f'<img src="{IMG_TOO_HIGH}" />'
 
 
 if __name__ == '__main__':
